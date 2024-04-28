@@ -42,8 +42,8 @@ function mapProdact(cardData) {
 mapProdact(wishlist);
 
 const addToWishlist = (id) => {
-  let wishilst = JSON.parse(localStorage.getItem("wishilst"));
-  updetWishilst = wishilst.filter((el) => el.id !== +id);
+  let wishlist = JSON.parse(localStorage.getItem("Wishilst"));
+  updetWishilst = wishlist.filter((el) => el.id !== +id);
   localStorage.setItem("wishilst", JSON.stringify(updetWishilst));
   mapProdact(updetWishilst)
 };

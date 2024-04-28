@@ -160,19 +160,15 @@ const addToWishlist = async (id) => {
         let data = await fetch(`${API__URL}/products/${id}`);
         let res = await data.json();
         
-        // Wishlist ma'lumotlarini olish
         let wishlist = JSON.parse(localStorage.getItem("Wishilst")) || [];
-        
-        // Agar mahsulot id-si ro'yxatda mavjud bo'lsa, unga izoh qo'shish
+
         let index = wishlist.findIndex((el) => el.id === res.id);
         
         if (index < 0) {
-            // Wishlist ga mahsulotni qo'shish
             wishlist.push(res);
             localStorage.setItem("Wishilst", JSON.stringify(wishlist));
             console.log("Mahsulot Wishlist ga qo'shildi:", res);
         } else {
-            // Wishlist dan mahsulotni olib tashlash
             wishlist = wishlist.filter((el) => el.id !== res.id);
             localStorage.setItem("Wishilst", JSON.stringify(wishlist));
             console.log("Mahsulot Wishlist dan o'chirildi:", res);
