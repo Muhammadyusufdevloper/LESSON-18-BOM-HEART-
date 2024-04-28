@@ -153,8 +153,8 @@ headerSearchInput.addEventListener("input", (e)=>{
         getProdacts(API__URL,"all",value)
     }
 })
-
-let count = 0
+let count = JSON.parse(localStorage.getItem("wishilst"))?.length || 0;
+headerKorzinkaCount.innerHTML = count;
 const addToWishlist = async(id)=>{
         
     let data = await fetch(`${API__URL}/products/${id}`)
@@ -170,7 +170,7 @@ const addToWishlist = async(id)=>{
                 updetWishilst = wishilst.filter(el => el.id !== res.id)
             }
 
-            localStorage.setItem("wishilst",JSON.stringify(updetWishilst))    
+            localStorage.setItem("wishilst",JSON.stringify(updetWishilst)) 
             count = updetWishilst.length
             headerKorzinkaCount.innerHTML = count
         })
