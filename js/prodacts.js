@@ -53,7 +53,7 @@ function mapProdact(cardData) {
                         <img src="./assets/image/shopping1.svg" alt="Shoping img">
                     </button>
                     <button class="prodact__heart-btn">
-                        <img src="./assets/image/heart.svg" alt="heart img">
+                        
                     </button>
                     <button class="prodact__sorch-btn">
                         <img src="./assets/image/sorch.svg" alt="sorch img">
@@ -154,26 +154,33 @@ headerSearchInput.addEventListener("input", (e)=>{
 })
 
 
-const addToWishlist = async (id)=>{
-    console.log("addToWishlist>>>>",id);
-    let data = await fetch(`${API__URL}/products/${id}`)
-    data
-        .json()
-        .then(product => {
-            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || []
-            let index = wishlist.findIndex(el => el.id === product.id)
-            let updatedWishlist = []
-            if (index < 0) {
-                updatedWishlist = [...wishlist,product]
-            }else{
-                updatedWishlist = wishlist.filter(el => el.id !== product.id)
-            }
-            localStorage.setItem("wishlist",JSON.stringify(updatedWishlist))
-        })
-        .catch(err => console.log(err))
-}
 
-
+const addToWishlist = async (id) => {
+    try {
+        let data = await fetch(`${API__URL}/products/${id}`);
+        let res = await data.json();
+        
+        // Wishlist ma'lumotlarini olish
+        let wishlist = JSON.parse(localStorage.getItem("Wishilst")) || [];
+        
+        // Agar mahsulot id-si ro'yxatda mavjud bo'lsa, unga izoh qo'shish
+        let index = wishlist.findIndex((el) => el.id === res.id);
+        
+        if (index < 0) {
+            // Wishlist ga mahsulotni qo'shish
+            wishlist.push(res);
+            localStorage.setItem("Wishilst", JSON.stringify(wishlist));
+            console.log("Mahsulot Wishlist ga qo'shildi:", res);
+        } else {
+            // Wishlist dan mahsulotni olib tashlash
+            wishlist = wishlist.filter((el) => el.id !== res.id);
+            localStorage.setItem("Wishilst", JSON.stringify(wishlist));
+            console.log("Mahsulot Wishlist dan o'chirildi:", res);
+        }
+    } catch (error) {
+        console.log("Xatolik:", error);
+    }
+};
 
 prodactWrapper.addEventListener("click",(e)=>{
     if (e.target.className === "prodact-img") {

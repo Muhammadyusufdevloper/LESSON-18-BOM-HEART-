@@ -14,7 +14,7 @@ function mapProdact(cardData) {
                           <img src="../assets/image/shopping1.svg" alt="Shoping img">
                       </button>
                       <button class="prodact__heart-btn">
-                          <img src="../assets/image/heart.svg" alt="heart img">
+                          
                       </button>
                       <button class="prodact__sorch-btn">
                           <img src="../assets/image/sorch.svg" alt="sorch img">
@@ -42,10 +42,10 @@ function mapProdact(cardData) {
 mapProdact(wishlist);
 
 const addToWishlist = (id) => {
-  let wishilst = JSON.parse(localStorage.getItem("wishilst")) || [];
+  let wishilst = JSON.parse(localStorage.getItem("wishilst"));
   updetWishilst = wishilst.filter((el) => el.id !== +id);
   localStorage.setItem("wishilst", JSON.stringify(updetWishilst));
-  mapProdact(wishilst)
+  mapProdact(updetWishilst)
 };
 
 prodactWrapper.addEventListener("click", (e) => {
