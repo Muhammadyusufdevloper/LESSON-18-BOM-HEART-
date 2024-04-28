@@ -1,6 +1,6 @@
 const prodactWrapper = document.querySelector(".prodact__wrapper");
 
-let wishilst = JSON.parse(localStorage.getItem("wishilst")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || []
 
 function mapProdact(cardData) {
   let card = "";
@@ -39,7 +39,7 @@ function mapProdact(cardData) {
   prodactWrapper.innerHTML = card;
 }
 
-mapProdact(wishilst);
+mapProdact(wishlist);
 
 const addToWishlist = (id) => {
   let wishilst = JSON.parse(localStorage.getItem("wishilst")) || [];
