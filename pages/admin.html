@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="../css/style.min.css">
+  </head>
+  <body>
+    <a href="#hero" class="back-top">
+      <img src="../assets/image/arrow-up.png" alt="logo img" />
+    </a>
+    <!-- HEADER START -->
+    <header class="header">
+      <nav class="header__navbar container df">
+        <div class="header__logo">
+          <a class="header__title" href="../index.html">
+            <img src="../assets/image/Logo.svg" alt="logo svg" />
+          </a>
+        </div>
+        <ul class="header__list df">
+          <li class="header__item">
+            <a class="header__link" href="#">Home</a>
+          </li>
+          <li class="header__item">
+            <a class="header__link" href="#">Shop</a>
+          </li>
+          <li class="header__item">
+            <a class="header__link" href="#">Plant Care</a>
+          </li>
+          <li class="header__item">
+            <a class="header__link" href="#">Blogs</a>
+          </li>
+          <li class="header__item__link-btn">
+            <a class="header__phone-link" href="#">
+              <img
+                class="header__phone-link__img"
+                src="../assets/image/sorch.svg"
+                alt="sorch img"
+              />
+            </a>
+          </li>
+        </ul>
+        <div class="header__btns">
+          <a class="header__phone-link" href="#">
+            <img
+              class="header__phone-link__img"
+              src="../assets/image/sorch.svg"
+              alt="sorch img"
+            />
+          </a>
+          <button class="header__korzinka__btn">
+            <img src="../assets/image/korzinka.svg" alt="korzinka btn" />
+          </button>
+          <button href="#" class="header__login-link" id="header__log-ut-link">
+            <img src="../assets/image/Logout.svg" alt="login btn" />
+            <p>Loga ut</p>
+        </button>
+          <button class="header__hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+        <section class="admin">
+            <div class="container admin__wrapper">
+                <h2 class="admin__title">Personal Information</h2>
+                <form>
+                    <div class="admin__form-wrapper">
+                        <div class="admin__form-card">
+                            <label class="admin__lable" for="fname">First Name <span>*</span></label>
+                            <input id="fname" class="admin__input" type="text">
+                        </div>
+
+                        <div class="admin__form-card">
+                            <label class="admin__lable" for="fname">Last Name <span>*</span></label>
+                            <input id="fname" class="admin__input" type="text">
+                        </div>
+
+                        <div class="admin__form-card">
+                            <label class="admin__lable" for="fname">Email address <span>*</span></label>
+                            <input id="fname" class="admin__input" type="email">
+                        </div>
+
+                        <div class="admin__form-card">
+                            <label class="admin__lable" for="fname">Phone Number <span>*</span></label>
+                            <div class="admin__form-card-part">
+                                <select>
+                                    <option value="">+996</option>
+                                    <option value="">+998</option>
+                                    <option value="">+997</option>
+                                    <option value="">+1</option>
+                                    <option value="">+234</option>
+                                    <option value="">+6</option>
+                                    <option value="">+7</option>
+                                    <option value="">+45</option>
+                                    <option value="">+24</option>
+                                </select>
+                                <input id="fname" class="admin__input" type="tel">
+                            </div>
+                        </div>
+
+
+                        <div class="admin__form-card">
+                            <label class="admin__lable" for="fname">Username <span>*</span></label>
+                            <input id="fname" class="admin__input" type="text">
+                        </div>
+
+                        <div class="admin__form-card-btn">
+                            <div class="admin__photo-card">
+                                <p>Photo</p>
+                                <a href="#" download="">
+                                    <img src="../assets/image/photo.svg" alt="photo-img">
+                                </a>
+                            </div>
+                            <div class="admin__button-card">
+                                <button>Change</button>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <h2 class="admin__title">Password change</h2>
+                <form>
+                    <div class="admin__password-card">
+                        <label class="admin__lable" for="fname">Current password</label>
+                        <input id="fname" class="admin__input" type="password">
+                    </div>
+                    <div class="admin__password-card">
+                        <label class="admin__lable" for="fname">New password</label>
+                        <input id="fname" class="admin__input" type="password">
+                    </div>
+                    <div class="admin__password-card">
+                        <label class="admin__lable" for="fname">Confirm new password</label>
+                        <input id="fname" class="admin__input" type="password">
+                    </div>
+                    <div class="admin__button-card">
+                        <button>Save Change</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="../js/app.js"></script>
+    <script src="../js/admin.js"></script>
+  </body>
+</html>

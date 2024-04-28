@@ -1,0 +1,128 @@
+.admin{
+    padding-top: 120px;
+    &__title{
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+        color:#3D3D3D;   
+        margin-bottom: 30px;  
+    }
+    &__form-wrapper{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 40px;
+    }
+    &__form-card{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    &__input{
+        height: 40px;
+        outline: none;
+        border-radius: 5px;
+        border: 1px solid #EAEAEA;
+        width: 100%;
+    }
+    &__lable{
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 15px;   
+        color: #3D3D3D;    
+    }
+    &__lable span{
+        color: #F03800;   
+    }
+    &__form-card-part{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        
+    }
+    &__form-card-part select{
+        border: 1px solid #EAEAEA;
+        height: 40px;
+        outline: none;
+        border-radius: 5px;
+        padding: 0 10px;
+    }
+    &__photo-card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    &__photo-card a{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 1px solid #EAEAEA;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__photo-card p{
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 15px;
+        color: #3D3D3D;       
+    }
+    &__button-card{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    &__button-card:last-child{
+        margin-top: 20px;
+    }
+    &__form-card-btn{
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+    &__button-card button{
+        padding: 12px 23px;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 16px; 
+        background-color: #46A358;
+        border-radius: 3px;
+        border: 1px solid transparent;
+        color: #fff; 
+        transition: .5s;
+        &:hover{
+            border: 1px solid #46A358;
+            background-color: transparent;
+            color: #46A358;
+        }     
+    }
+    &__password-card{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 40px;
+        max-width: 48%;
+    }
+}
+form{
+    margin-bottom: 60px;
+}
+
+@media(max-width:900px){
+    .admin{
+        &__form-wrapper{
+            grid-template-columns: repeat(1,1fr);
+        }
+        &__password-card{
+            max-width: 100%;
+        }
+    }
+}
+@media(max-width:420px){
+    .admin{
+        &__button-card button{
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+    }
+}
