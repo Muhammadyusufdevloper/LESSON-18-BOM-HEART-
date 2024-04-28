@@ -1,6 +1,6 @@
 const prodactWrapper = document.querySelector(".prodact__wrapper");
 
-let wishlist = JSON.parse(localStorage.getItem("wishlist")) || []
+let wishilst = JSON.parse(localStorage.getItem("wishilst")) || []
 
 function mapProdact(cardData) {
   let card = "";
@@ -14,7 +14,7 @@ function mapProdact(cardData) {
                           <img src="../assets/image/shopping1.svg" alt="Shoping img">
                       </button>
                       <button class="prodact__heart-btn">
-                          
+                        <img class="prodact__heart-img" src="../assets/image/heart.svg" alt="heart img">
                       </button>
                       <button class="prodact__sorch-btn">
                           <img src="../assets/image/sorch.svg" alt="sorch img">
@@ -39,20 +39,22 @@ function mapProdact(cardData) {
   prodactWrapper.innerHTML = card;
 }
 
-mapProdact(wishlist);
+mapProdact(wishilst);
 
 const addToWishlist = (id) => {
-  let wishlist = JSON.parse(localStorage.getItem("Wishilst"));
-  updetWishilst = wishlist.filter((el) => el.id !== +id);
-  localStorage.setItem("wishilst", JSON.stringify(updetWishilst));
-  mapProdact(updetWishilst)
+  let wishilst = JSON.parse(localStorage.getItem("wishilst"));
+  let updetWishilst = wishilst.filter((el) => el.id !== +id);
+  localStorage.setItem("wishilst",JSON.stringify(updetWishilst)) 
+  mapProdact(updetWishilst);
 };
+
+
 
 prodactWrapper.addEventListener("click", (e) => {
   if (e.target.className === "prodact-img") {
     let id = e.target.closest(".prodact__cards").dataset.id;
     window.open(`./pages/card.html?id=${id}`, "_self");
-  } else if (e.target.className === "prodact__heart-btn") {
+  } else if ((e.target.className === "prodact__heart-btn")|| (e.target.className === "prodact__heart-img")) {
     let id = e.target.closest(".prodact__cards").dataset.id;
     addToWishlist(id);
   }

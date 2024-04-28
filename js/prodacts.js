@@ -12,6 +12,7 @@ const username = document.querySelector("#username")
 const password = document.querySelector("#password")
 const headerSearchInput = document.querySelector(".header__search__input")
 const catalogList = document.querySelector(".catalog__list")
+const headerKorzinkaCount = document.querySelector(".header__korzinka__count")
 
 
 
@@ -53,7 +54,7 @@ function mapProdact(cardData) {
                         <img src="./assets/image/shopping1.svg" alt="Shoping img">
                     </button>
                     <button class="prodact__heart-btn">
-                        
+                    <img class="prodact__heart-img" src="../assets/image/heart.svg" alt="heart img">
                     </button>
                     <button class="prodact__sorch-btn">
                         <img src="./assets/image/sorch.svg" alt="sorch img">
@@ -153,40 +154,40 @@ headerSearchInput.addEventListener("input", (e)=>{
     }
 })
 
-
-
-const addToWishlist = async (id) => {
-    try {
-        let data = await fetch(`${API__URL}/products/${id}`);
-        let res = await data.json();
+let count = 0
+const addToWishlist = async(id)=>{
         
-        let wishlist = JSON.parse(localStorage.getItem("Wishilst")) || [];
+    let data = await fetch(`${API__URL}/products/${id}`)
+    data
+        .json()
+        .then(res => {
+            let wishilst = JSON.parse(localStorage.getItem("wishilst")) || []
+            let index = wishilst.findIndex(el=> el.id === res.id)
+            let updetWishilst = []
+            if (index < 0) {
+                updetWishilst = [...wishilst,res] 
+            }else{
+                updetWishilst = wishilst.filter(el => el.id !== res.id)
+            }
 
-        let index = wishlist.findIndex((el) => el.id === res.id);
-        
-        if (index < 0) {
-            wishlist.push(res);
-            localStorage.setItem("Wishilst", JSON.stringify(wishlist));
-            console.log("Mahsulot Wishlist ga qo'shildi:", res);
-        } else {
-            wishlist = wishlist.filter((el) => el.id !== res.id);
-            localStorage.setItem("Wishilst", JSON.stringify(wishlist));
-            console.log("Mahsulot Wishlist dan o'chirildi:", res);
-        }
-    } catch (error) {
-        console.log("Xatolik:", error);
-    }
-};
+            localStorage.setItem("wishilst",JSON.stringify(updetWishilst))    
+            count = updetWishilst.length
+            headerKorzinkaCount.innerHTML = count
+        })
+        .catch(err => console.log(err))
+}
+
+
+
 
 prodactWrapper.addEventListener("click",(e)=>{
     if (e.target.className === "prodact-img") {
         let id = e.target.closest(".prodact__cards").dataset.id
         window.open(`./pages/card.html?id=${id}`,"_self")
-    }else if (e.target.className === "prodact__heart-btn") {
+    }else if ((e.target.className === "prodact__heart-btn")|| (e.target.className === "prodact__heart-img")) {
         let id = e.target.closest(".prodact__cards").dataset.id
         addToWishlist(id);
     }
 
 })
-
 
